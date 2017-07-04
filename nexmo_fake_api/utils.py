@@ -1,7 +1,6 @@
 class ErrorCollection(object):
     def __init__(self):
-        self.__collection__ = list()
-        pass
+         self.__collection__ = list() #
 
     def append(self, item):
         if (type(item) != dict):
@@ -17,7 +16,15 @@ class ErrorCollection(object):
         return out
 
 
-NO_API_KEY = ErrorCollection()
-NO_API_KEY.append({"status": "2", "error-text": "Missing username"})
+class DefaultErrorCollection(ErrorCollection):
+    def __init__(self, error_code, error_text):
+        super(DefaultErrorCollection, self).__init__()
+        item = {
+            "status": error_code,
+            "error-text": error_text
+        }
+        self.append(item)
 
+
+NO_API_KEY = DefaultErrorCollection("2", "Missing username")
 

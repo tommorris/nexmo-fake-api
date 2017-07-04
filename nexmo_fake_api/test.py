@@ -1,4 +1,4 @@
-from .utils import ErrorCollection
+from .utils import ErrorCollection, DefaultErrorCollection
 import pytest
 
 def test_error_collection_empty():
@@ -17,3 +17,8 @@ def test_error_collection_check():
     e = ErrorCollection()
     with pytest.raises(TypeError):
         e.append(True)
+
+def test_default_error_collection():
+    e = DefaultErrorCollection("2", "Missing username")
+    assert e.format()['messages'][0] == {"status": "2", "error-text": "Missing username"}
+
