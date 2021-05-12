@@ -1,6 +1,6 @@
 click==7.0
 Flask==0.12.2
-itsdangerous==0.24
+itsdangerous==2.0.0
 Jinja2==2.9.6
 MarkupSafe==1.0
 py==1.4.34
